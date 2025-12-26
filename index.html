@@ -3,100 +3,408 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Basic Website</title>
+    <title>Portfolio-Chiranjeev</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS - This makes the website look good */
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
             line-height: 1.6;
-            background-color: #f4f4f4;
         }
 
-        header {
-            background: #333;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
-        }
-
+        /* Navigation */
         nav {
-            background: #444;
-            color: #fff;
-            padding: 0.5rem;
-            text-align: center;
+            background-color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        nav a {
-            color: #fff;
-            margin: 0 15px;
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #17a2b8;
+        }
+
+        .nav-links a.active {
+            color: #17a2b8;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-icons i {
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        /* Dark Theme */
+        body.dark-theme {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-theme nav {
+            background-color: #2d2d2d;
+        }
+
+        body.dark-theme .nav-links a,
+        body.dark-theme .nav-icons i {
+            color: #e0e0e0;
+        }
+
+        body.dark-theme .nav-links a:hover,
+        body.dark-theme .nav-links a.active {
+            color: #17a2b8;
+        }
+
+        body.dark-theme .profile-card,
+        body.dark-theme .about-section {
+            background-color: #2d2d2d;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        body.dark-theme .profile-card h1,
+        body.dark-theme .about-section h2,
+        body.dark-theme .section h3,
+        body.dark-theme .education-item h4 {
+            color: #e0e0e0;
+        }
+
+        body.dark-theme .subtitle,
+        body.dark-theme .university,
+        body.dark-theme .about-text,
+        body.dark-theme .interests-list li,
+        body.dark-theme .education-item .institution-name {
+            color: #b0b0b0;
+        }
+
+        body.dark-theme .social-icons a {
+            color: #b0b0b0;
+        }
+
+        body.dark-theme .social-icons a:hover {
+            color: #17a2b8;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            position: sticky;
+            top: 100px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 4px solid #17a2b8;
+        }
+
+        .profile-card h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .profile-card .subtitle {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .institution {
+            color: #17a2b8;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .department {
+            color: #17a2b8;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .university {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icons a {
+            color: #666;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #17a2b8;
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .about-text {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .about-text a {
+            color: #17a2b8;
             text-decoration: none;
         }
 
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px;
-            background: #fff;
-            min-height: 400px;
+        .about-text a:hover {
+            text-decoration: underline;
         }
 
-        footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 2rem;
         }
 
-        button {
-            padding: 10px 20px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
+        .section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #333;
         }
 
-        button:hover {
-            background-color: #218838;
+        .interests-list {
+            list-style: none;
+        }
+
+        .interests-list li {
+            padding: 0.5rem 0;
+            color: #555;
+        }
+
+        .interests-list li:before {
+            content: "•";
+            color: #17a2b8;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .education-item {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .education-item:before {
+            content: "\f19d";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #17a2b8;
+        }
+
+        .education-item h4 {
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-item .institution-name {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-card {
+                position: relative;
+                top: 0;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>Welcome to My Website</h1>
-    </header>
-
+    <!-- Navigation -->
     <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="./skills.html">Skills</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <i class="fas fa-moon" id="themeToggle"></i>
+            </div>
+        </div>
     </nav>
 
+    <!-- Main Content -->
     <div class="container">
-        <h2>Main Heading</h2>
-        <p>This is a basic HTML template. It is responsive, meaning it will look good on both computers and mobile phones.</p>
-        
-        <h3>Interactive Section</h3>
-        <p>Click the button below to see a simple JavaScript alert!</p>
-        <button onclick="showMessage()">Click Me!</button>
+        <div class="content-wrapper">
+            <!-- Profile Card -->
+            <div class="profile-card">
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQF-1mzHHPjw1Q/profile-displayphoto-crop_800_800/B4DZmzYowPGwAI-/0/1759651205685?e=1768435200&v=beta&t=vARJfM5VNGtABazugKw2tZrsvUhWGCR8abhWWfaoa0k" alt="Profile Picture" class="profile-image">
+                <h1>Chiranjeev</h1>
+                <p class="subtitle">Research Scholar</p>
+                <p class="institution">Indian Insitute of Technology, Roorkee</p>
+                <p class="department">Electrical Engineering</p>
+                
+                <div class="social-icons">
+                    <a href="mailto:chiranjeev1@ee.iitr.ac.in"><i class="fas fa-envelope"></i></a>
+                    <a href="https://scholar.google.com/citations?user=5LpkDfIAAAAJ&hl=en"><i class="fab fa-google"></i></a>
+                    <a href="https://github.com/vip3r0910"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/chiranjeev-99b47b374/"> <i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="about-section">
+                <h2>About me</h2>
+                <div class="about-text">
+                    <p>My name is Chiranjeev and I am a research scholar at IIT Roorkee <a href="#">
+                </div>
+
+
+                    <!-- Education -->
+                    <div class="section">
+                        <h3>Education</h3>
+                        <div class="education-item">
+                            <h4>PhD in Systems and Control, 2024-present</h4>
+                            <p class="institution-name">Indian Insitute of Technology, Roorkee</p>
+                        </div>
+                        <div class="education-item">
+                            <h4>Bachelors of Technology(Electrical Engineering), 2019-2023</h4>
+                            <p class="institution-name">Tezpur University</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 My Basic Website | All Rights Reserved</p>
-    </footer>
-
     <script>
-        // JavaScript - This adds interactivity
-        function showMessage() {
-            alert("Hello! You clicked the button.");
-        }
-    </script>
+        // Dark theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
 
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-theme');
+            themeToggle.classList.remove('fa-moon');
+            themeToggle.classList.add('fa-sun');
+        }
+
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-theme');
+            
+            // Toggle icon
+            if (body.classList.contains('dark-theme')) {
+                themeToggle.classList.remove('fa-moon');
+                themeToggle.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.classList.remove('fa-sun');
+                themeToggle.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
 </body>
 </html>
